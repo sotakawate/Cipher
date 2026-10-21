@@ -11,22 +11,22 @@ public class Box {
 		//Read in String
 		String message = in.nextLine();
 		//Read in how many columns
-		int col = in.nextInt();
+		int colwidth = in.nextInt();
 		//break the String into columns
-		int col2=(message.length()+col-1)/col;
+		int totalrows=(message.length()+colwidth-1)/colwidth;
 		int x=0;
-		for(x=0;x<col2;x++) {
-			int end =Math.min(n + col, message.length());
+		for(x=0;x<totalrows;x++) {
+			int end =Math.min(n + colwidth, message.length());
 			Lines.add(message.substring(n,end));
-			n= n+col;
+			n= n+colwidth;
 			}
 		//Rewrite the message by reading the columns vertically
 		String shifted ="";
-		for(int z=0; z<col;z++) {
-			for(int y=0; y<col2;y++) {
-				String a = Lines.get(y);
-				if(z<a.length()) {
-				shifted = shifted+a.charAt(z);
+		for(int col=0; col<colwidth;col++) {
+			for(int row=0; row<totalrows;row++) {
+				String a = Lines.get(row);
+				if(col<a.length()) {
+				shifted = shifted+a.charAt(col);
 				}
 			}
 		}
